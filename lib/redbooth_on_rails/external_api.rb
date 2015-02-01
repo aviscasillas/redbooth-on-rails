@@ -10,6 +10,14 @@ module RedboothOnRails
       client.project(:index).all
     end
 
+    def project(id)
+      client.project(:show, id: id)
+    end
+
+    def task_lists(conditions)
+      client.task_list(:index, conditions).all
+    end
+
     def task_list_create(params)
       client.task_list(:create, params)
     end
