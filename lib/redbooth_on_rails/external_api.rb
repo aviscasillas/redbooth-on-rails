@@ -10,6 +10,10 @@ module RedboothOnRails
       client.project(:index).all
     end
 
+    def task_list_create(params)
+      client.task_list(:create, params)
+    end
+
     private
 
     def session
