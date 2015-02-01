@@ -3,5 +3,7 @@ Rails.application.routes.draw do
   get '/sign_out', to: 'sessions#destroy'
 
   root 'welcome#index'
-  resources :projects
+  resources :projects do
+    resources :task_lists
+  end
 end
