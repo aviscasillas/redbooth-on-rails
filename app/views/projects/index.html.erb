@@ -1,1 +1,10 @@
-This should be the protected resource :P
+<h1>Projects</h1>
+<ul>
+  <% @projects.each do |project| %>
+    <li>
+      <h3> <%= project.name %> </h3>
+      <div class="description"><%= raw project.description  %></div>
+      <small> Created on <%= Time.at(project.created_at).strftime('%c') %> </small>
+    </li>
+  <% end %>
+</ul>
