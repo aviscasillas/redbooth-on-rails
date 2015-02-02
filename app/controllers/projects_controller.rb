@@ -1,5 +1,3 @@
-require 'redbooth_on_rails/external_api'
-
 class ProjectsController < ApplicationController
   before_filter :authenticate
 
@@ -7,9 +5,14 @@ class ProjectsController < ApplicationController
     @projects = external_api.projects
   end
 
+  def show
+    @project = external_api.project(project_id)
+    @task_lists = external_api.task_lists(project_id: project_id)
+  end
+
   private
 
-  def external_api
-    @external_api ||= RedboothOnRails::ExternalApi.new(current_user)
+  def project_id
+    @project_id ||= params[:id]
   end
 end

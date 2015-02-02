@@ -12,7 +12,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'omniauth-redbooth'
-gem 'redbooth-ruby'
+gem 'redbooth-ruby', git: 'git@github.com:teambox/redbooth-ruby.git'
 
 group :development, :test do
   gem 'byebug'
