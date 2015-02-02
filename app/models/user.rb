@@ -11,4 +11,8 @@ class User < ActiveRecord::Base
       u.save!
     end
   end
+
+  def oauth_expired?
+    Time.current > oauth_expires_at
+  end
 end
