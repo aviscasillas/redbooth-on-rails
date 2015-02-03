@@ -15,6 +15,7 @@ gem 'bootstrap-sass', '~> 3.3.0'
 
 gem 'omniauth-redbooth'
 gem 'redbooth-ruby', git: 'git@github.com:teambox/redbooth-ruby.git'
+gem 'dotenv-rails', group: :development
 
 group :development, :test do
   gem 'byebug'
