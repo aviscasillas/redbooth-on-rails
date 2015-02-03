@@ -7,8 +7,12 @@ class User < ActiveRecord::Base
       u.email = auth.info.email
       u.oauth_token = auth.credentials.token
       u.oauth_refresh_token = auth.credentials.refresh_token
-      u.oauth_expires_at = auth.credentials.expires_at
+      u.oauth_expires_at = Time.at(auth.credentials.expires_at)
       u.save!
     end
+  end
+
+  def oauth_expired?
+    Time.current > oauth_expires_at
   end
 end
