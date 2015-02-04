@@ -27,8 +27,6 @@ module RedboothOnRails
         @client ||= RedboothRuby::Client.new(session)
       end
 
-      private
-
       def refresh_token
         call_refresh.tap do |resp|
           user.update_attributes(oauth_token: resp.token,
@@ -36,6 +34,8 @@ module RedboothOnRails
         end
         uncache(:session, :client)
       end
+
+      private
 
       def call_refresh
         session.client.get_token(grant_type: 'refresh_token',
