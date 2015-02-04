@@ -1,7 +1,5 @@
 = title("Create new task list")
 
-= form_for [:project, @task_list], html: { class: 'simple-form' } do |f|
-  %div.form-group
-    = f.label(:name, 'Insert the new task list name:', class: 'form-cotrol')
-    = f.text_field(:name, class: 'form-cotrol')
-  = f.submit('Send', class: 'btn btn-success')
+= simple_form_for [:project, @task_list] do |f|
+  = f.input :name
+  = f.button :submit, class: 'btn-primary'
