@@ -22,8 +22,6 @@ module RedboothOnRails
       client.task_list(:create, params)
     end
 
-    private
-
     def session
       @session ||= RedboothRuby::Session.new(token: user.oauth_token)
     end
@@ -32,6 +30,8 @@ module RedboothOnRails
       refresh_token if user.oauth_expired?
       @client ||= RedboothRuby::Client.new(session)
     end
+
+    private
 
     def refresh_token
       call_refresh.tap do |resp|

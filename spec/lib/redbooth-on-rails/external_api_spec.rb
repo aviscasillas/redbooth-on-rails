@@ -2,7 +2,12 @@ require 'rails_helper'
 require 'redbooth_on_rails/external_api'
 
 describe RedboothOnRails::ExternalApi do
-  let(:user) { double(User, oauth_token: 'some token') }
+  let(:oauth_token) { 'some_token' }
+  let(:oauth_expires_at) { 1.hour.from_now }
+  let(:user) do
+    User.create(oauth_token: 'some token', oauth_expires_at: oauth_expires_at)
+  end
+
   let(:external_api) { described_class.new(user) }
 
   let(:client) { double(:client) }
@@ -29,13 +34,14 @@ describe RedboothOnRails::ExternalApi do
 
   describe '#task_list_create' do
     let(:params) { double(:params) }
+    let(:response) { double(:response) }
     subject { external_api.task_list_create(params) }
 
     before do
       expect(client).to receive(:task_list).with(:create, params)
-        .and_return(double)
+        .and_return(response)
     end
 
-    it { is_expected.to_not be nil }
+    it { is_expected.to eq response }
   end
 end
