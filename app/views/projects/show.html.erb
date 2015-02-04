@@ -1,8 +1,0 @@
-<%= link_to 'Back to projects index', projects_path  %>
-<h1> Task lists of <%= @project.name %> </h1>
-<ul>
-  <% @task_lists.each do |task_list| %>
-    <li> <%= task_list.name %>
-  <% end %>
-</ul>
-<%= link_to 'Add', new_project_task_list_path(@project.id)  %>
