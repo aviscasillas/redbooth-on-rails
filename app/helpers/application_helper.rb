@@ -30,4 +30,10 @@ module ApplicationHelper
       "Logout <b>#{current_user.name}</b> #{glyphicon('log-out')}".html_safe
     link_to(text, sign_out_path)
   end
+
+  def btn_link_to(text, path, options = {})
+    options_class = options.delete(:class) || ''
+    opts = { class: "#{options_class} btn btn-primary" }
+    link_to text, path, options.merge(opts)
+  end
 end
