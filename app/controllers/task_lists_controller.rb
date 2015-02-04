@@ -7,7 +7,7 @@ class TaskListsController < ApplicationController
 
   def create
     params_to_send = params.slice(:project_id).merge(params[:task_list])
-    external_api.task_list_create(params_to_send)
+    redbooth.task_list.create(params_to_send)
     redirect_to project_path(project_id)
   end
 
