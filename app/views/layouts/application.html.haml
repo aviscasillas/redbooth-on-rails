@@ -1,0 +1,21 @@
+!!!
+%html
+  %head
+    %title RedboothOnRails
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+
+  %body
+    %nav.navbar.navbar-default.navbar-fixed-top
+      .container
+        .row
+          #menu.col-md-8
+            = render 'shared/menu'
+          #user.col-md-4
+            = render 'shared/user'
+
+    .container
+      .row
+        .col-md-12
+          = yield

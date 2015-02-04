@@ -1,0 +1,6 @@
+%ul.nav.navbar-nav.navbar-right
+  %li
+    - if logged_in?
+      = link_to_logout
+    - else
+      = link_to_login

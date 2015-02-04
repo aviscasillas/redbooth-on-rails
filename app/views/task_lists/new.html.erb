@@ -1,7 +1,0 @@
-<%= link_to 'Back to project', project_path(@task_list.project_id)  %>
-
-<%= form_for [:project, @task_list] do |f| %>
-  <%= f.label(:name, 'Task list name:') %>
-  <%= f.text_field(:name) %>
-  <%= f.submit('Create') %>
-<% end %>
