@@ -2,12 +2,12 @@ class ProjectsController < ApplicationController
   before_filter :authenticate
 
   def index
-    @projects = external_api.projects
+    @projects = redbooth.project.all
   end
 
   def show
-    @project = external_api.project(project_id)
-    @task_lists = external_api.task_lists(project_id: project_id)
+    @project = redbooth.project.find(project_id)
+    @task_lists = redbooth.task_list.all(project_id: project_id)
   end
 
   private

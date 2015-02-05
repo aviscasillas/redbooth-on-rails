@@ -1,6 +1,8 @@
-require 'redbooth_on_rails/external_api'
+require 'redbooth_on_rails/service'
 
 class ApplicationController < ActionController::Base
+  include RedboothOnRails::Service
+
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
@@ -16,11 +18,5 @@ class ApplicationController < ActionController::Base
 
   def authenticate
     redirect_to root_url unless logged_in?
-  end
-
-  private
-
-  def external_api
-    @external_api ||= RedboothOnRails::ExternalApi.new(current_user)
   end
 end
