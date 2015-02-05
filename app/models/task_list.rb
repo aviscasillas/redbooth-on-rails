@@ -5,6 +5,6 @@ class TaskList
   validates :name, presence: true
 
   def to_provider
-    as_json
+    as_json.symbolize_keys
   end
 end
