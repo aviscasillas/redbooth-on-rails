@@ -3,10 +3,9 @@
   .row
     .col-md-12
       .jumbotron
-        %h1 Welcome to RedboothOnRails
+        %h1
+          = t('controllers.welcome.title')
         %p
-          This is an example of how to connect with Redbooth API.
-          Right now, you are reading the public resource. If you want to see the protected
-          one, just go login with Redbooth :P.
+          = t('controllers.welcome.content')
         %p
           = link_to_login(class: 'btn btn-primary btn-lg', role: 'button')

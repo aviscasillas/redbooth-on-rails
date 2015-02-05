@@ -1,5 +1,6 @@
 .navbar-header
   = link_to('RedboothOnRails', root_url, class: 'navbar-brand')
-%ul.nav.navbar-nav
-  %li
-    = link_to('My Projects', projects_path)
+- if logged_in?
+  %ul.nav.navbar-nav
+    %li
+      = link_to(t('controllers.projects.index.title'), projects_path)
