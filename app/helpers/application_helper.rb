@@ -18,12 +18,12 @@ module ApplicationHelper
     content_tag(:button, class: 'close', data: { dismiss: 'alert' }) { '×' }
   end
 
-  def title(title)
-    content_tag(:h2) { title }
+  def title(i18nt, params = {})
+    content_tag(:h2) { t("controllers.#{i18nt}.title", params) }
   end
 
   def default_description
-    content_tag(:em, class: 'text-muted') { 'No description available' }
+    content_tag(:em, class: 'text-muted') { t('helpers.default_description') }
   end
 
   def description(description)
@@ -32,7 +32,7 @@ module ApplicationHelper
   end
 
   def created_on(datetime)
-    "Created on #{Time.at(datetime).strftime('%c')}"
+    t('helpers.created_on', datetime: Time.at(datetime).strftime('%c'))
   end
 
   def glyphicon(icon_name)
@@ -40,13 +40,13 @@ module ApplicationHelper
   end
 
   def link_to_login(options = {})
-    text = "#{glyphicon('user')} Login with Redbooth".html_safe
+    text = "#{glyphicon('user')} #{t('helpers.login_with')} Redbooth".html_safe
     link_to(text, '/auth/redbooth', options)
   end
 
   def link_to_logout
     text =
-      "Logout <b>#{current_user.name}</b> #{glyphicon('log-out')}".html_safe
+      "#{t('helpers.logout')} <b>#{current_user.name}</b> #{glyphicon('log-out')}".html_safe
     link_to(text, sign_out_path)
   end
 

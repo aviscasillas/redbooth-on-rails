@@ -8,11 +8,12 @@ class TaskListsController < ApplicationController
   def create
     @task_list = TaskList.new(task_list_params)
     if @task_list.valid?
-      redbooth.task_list.create(task_list.to_provider)
-      redirect_to project_path(project_id)
+      redbooth.task_list.create(@task_list.to_provider)
+      redirect_to project_path(project_id), notice: t('flash.task_lists.created')
+    else
+      flash.now[:error] = t('flash.form.validation_errors')
+      render :new
     end
-    flash.now[:error] = 'You have errors in the form'
-    render :new
   end
 
   private
