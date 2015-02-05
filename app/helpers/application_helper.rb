@@ -1,4 +1,23 @@
+# -*- coding: utf-8 -*-
 module ApplicationHelper
+  def bootstrap_class_for(type)
+    { success: 'alert-success',
+      error: 'alert-danger',
+      alert: 'alert-warning',
+      notice: 'alert-info' }.fetch(type, type.to_s)
+  end
+
+  def flash_message(type, msg)
+    content_tag :div, class: "alert #{bootstrap_class_for(type.to_sym)}" do
+      concat flash_close_button
+      concat msg
+    end
+  end
+
+  def flash_close_button
+    content_tag(:button, class: 'close', data: { dismiss: 'alert' }) { '×' }
+  end
+
   def title(title)
     content_tag(:h2) { title }
   end
