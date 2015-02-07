@@ -11,6 +11,7 @@ This is a stand-alone application example, created to show how authentication an
 ```bash
 $ git clone git@github.com:aviscasillas/redbooth-on-rails.git
 $ cd redbooth-on-rails
+$ bundle install
 $ export REDBOOTH_APP_ID=<your-app-id>
 $ export REDBOOTH_APP_SECRET=<your-app-secret>
 $ rails s
